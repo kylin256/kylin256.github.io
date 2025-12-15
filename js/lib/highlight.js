@@ -14,8 +14,14 @@ mixins.highlight = {
             let codes = document.querySelectorAll("pre");
             for (let i of codes) {
                 let code = i.textContent;
-                let language = [...i.classList, ...i.firstChild.classList][0] || "plaintext";
                 let highlighted;
+                let language = "plaintext";
+                // 如果出错直接跳过，避免和mermaid渲染冲突
+                try {
+                    language = [...i.classList, ...i.firstChild.classList][0] || "plaintext";
+                } catch {
+                    continue;
+                }
                 try {
                     highlighted = hljs.highlight(code, { language }).value;
                 } catch {

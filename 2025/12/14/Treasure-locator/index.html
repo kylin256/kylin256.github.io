@@ -3,7 +3,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8" />
-    <title>Kylin的站点</title>
+    <title>宝藏位置辅助计算器 - 项目说明 | Kylin的站点</title>
     <meta name="author" content="Kylin" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -47,7 +47,11 @@
 
 
 
-<script src="/js/lib/home.js"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/twikoo/1.6.31/twikoo.all.min.js"></script>
+
+
 
 <link rel="stylesheet" href="/css/main.css" />
 
@@ -157,39 +161,19 @@
 </transition>
 
         <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-            <div id="home-head">
-    <div
-        id="home-background"
-        ref="homeBackground"
-        data-images="/images/background.jpg"
-    ></div>
-    <div id="home-info" @click="homeClick">
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="info">
-            <div class="wrap">
-                <h1>Kylin的站点</h1>
-                <h3>欢迎到来</h3>
-                <h5></h5>
-            </div>
-        </span>
+            <div class="article">
+    <div>
+        <h1>宝藏位置辅助计算器 - 项目说明</h1>
     </div>
-</div>
-<div
-    id="home-posts-wrap"
-    ref="homePostsWrap"
-    true
->
-    <div id="home-posts">
-        
-
-<div class="post">
-    <a href="/2025/12/14/Treasure-locator/">
-        <h2 class="post-title">宝藏位置辅助计算器 - 项目说明</h2>
-    </a>
-    <div class="category-and-date">
+    <!-- 引入目录css -->
+    <link rel="stylesheet" href="/css/particlex-toc.css">
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/12/14
+        </span>
         
         <span class="category">
             <a href="/categories/%E9%A1%B9%E7%9B%AE/">
@@ -200,19 +184,61 @@
             </a>
         </span>
         
-        <span class="date">
+        
+        <span class="tags">
             <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
+                <i class="fa-solid fa-tags fa-fw"></i>
             </span>
-            2025/12/14
+            
+            
+            <span class="tag">
+                
+                <a href="/tags/HTML/" style="color: #ffa2c4">
+                    HTML
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/JavaScript/" style="color: #03a9f4">
+                    JavaScript
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/CSS/" style="color: #ff7d73">
+                    CSS
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/Python/" style="color: #00bcd4">
+                    Python
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/FastAPI/" style="color: #00a596">
+                    FastAPI
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/%E7%AE%97%E6%B3%95/" style="color: #ffa2c4">
+                    算法
+                </a>
+            </span>
+            
         </span>
         
-        
     </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在25年的10月份，当时有关注到某游戏的活动界面上线了一个叫做挖宝藏的活动，将宝藏按照指定的摆放形状放于5x5的格子内，挖到宝藏将有对应的奖励。<br>然而，如果随便点的话，那不仅可能导致消耗大量材料，甚至于一定的财力😕，那怎么能行呢？于是，就有了这个项目。（项目10月份写完的时候还没来得及上传活动就结束了，活动不是第一次出现了，万一以后还有的话就用的上，上传到云仓库吧稳妥些）<br><a href="https://github.com/kylin256/Treasure-Locator">项目地址：https://github.com/kylin256/Treasure-Locator</a></p>
+    
+    <div class="content" v-pre>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在25年的10月份，当时有关注到某游戏的活动界面上线了一个叫做挖宝藏的活动，将宝藏按照指定的摆放形状放于5x5的格子内，挖到宝藏将有对应的奖励。<br>然而，如果随便点的话，那不仅可能导致消耗大量材料，甚至于一定的财力😕，那怎么能行呢？于是，就有了这个项目。（项目10月份写完的时候还没来得及上传活动就结束了，活动不是第一次出现了，万一以后还有的话就用的上，上传到云仓库吧稳妥些）<br><a href="https://github.com/kylin256/Treasure-Locator">项目地址：https://github.com/kylin256/Treasure-Locator</a></p>
 <p>[TOC]</p>
 <h2 id="📋-项目简介"><a href="#📋-项目简介" class="headerlink" title="📋 项目简介"></a>📋 项目简介</h2><p>这是一个基于 FastAPI 的宝藏位置辅助计算器，用于在5x5网格上根据不同的宝藏形状和用户标记，计算宝藏可能位置的概率分布。该项目通过颜色编码可视化概率，帮助用户进行逻辑推理和决策。</p>
 <h2 id="⚙️-安装"><a href="#⚙️-安装" class="headerlink" title="⚙️ 安装"></a>⚙️ 安装</h2><ul>
@@ -677,88 +703,23 @@ FastAPIApp --> PositionCalculator</pre>
 </ul>
 <p>4.最终：计数器数字 &#x3D; 这个格子被多少个有效位置覆盖过</p>
 
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/HTML/" style="color: #ff7d73">HTML</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/JavaScript/" style="color: #00bcd4">JavaScript</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/CSS/" style="color: #03a9f4">CSS</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/Python/" style="color: #00a596">Python</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/FastAPI/" style="color: #00bcd4">FastAPI</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/%E7%AE%97%E6%B3%95/" style="color: #ffa2c4">算法</a>
-        </span>
-        
-    </div>
-    <a href="/2025/12/14/Treasure-locator/" class="go-post">阅读全文</a>
-</div>
-
-
-        <div class="page-current">
-    
-    <span class="current">1</span>
-    
-    
-    
-    
-</div>
-
     </div>
     
-    <div id="home-card">
-        <div id="card-style">
-    <div id="card-div">
-        <div class="avatar">
-            <img src="/images/avatar.jpg" alt="avatar" />
-        </div>
-        <div class="name">Kylin</div>
-        <div class="description">
-            <p>知行合一，止于至善</p>
-
-        </div>
-        
-        
-        <div class="friend-links">
-            
-            <div class="friend-link">
-                <a href="https://github.com/kylin256">Github</a>
-            </div>
-            
-        </div>
-        
+    <!-- 引入目录js -->
+    <script src="/js/particlex-toc.js" defer></script>
+    
+    
+    
+    <div id="comment">
+        <div id="giscus-container" class="giscus"></div>
     </div>
-</div>
-
+    
+    
+    
+    <div id="comment">
+        <div id="twikoo-container"></div>
     </div>
+    
     
 </div>
 
@@ -842,6 +803,39 @@ FastAPIApp --> PositionCalculator</pre>
     <script src="/js/main.js"></script>
     <link rel="stylesheet" href="/css/core-values.css">
     <script src="/js/core-values-click.js"></script>
+    
+    
+<script
+    src="https://giscus.app/client.js"
+    data-repo=""
+    data-repo-id=""
+    data-category=""
+    data-category-id=""
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang=""
+    crossorigin
+    async
+></script>
+
+
+
+
+<script>
+    twikoo.init({
+        el: "#twikoo-container",
+        envId: "https://kylin256comments.netlify.app/.netlify/functions/twikoo",
+        region: "",
+        path: location.pathname,
+        lang: "",
+    })
+</script>
+
+
     
 </body>
 </html>

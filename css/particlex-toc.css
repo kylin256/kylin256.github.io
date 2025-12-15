@@ -1,0 +1,138 @@
+/* fixed-toc-simple.css */
+#fixed-particlex-toc {
+  position: fixed;
+  top: 120px;
+  right: 30px;
+  width: 280px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+  z-index: 9999;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.toc-header {
+  padding: 14px 16px;
+  border-bottom: 1px solid #edf2f7;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8fafc;
+  cursor: move;
+}
+
+.toc-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.toc-title {
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.toc-count {
+  font-size: 12px;
+  color: #718096;
+  background: rgba(0, 0, 0, 0.04);
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+.toc-header-right {
+  display: flex;
+  gap: 6px;
+}
+
+.toc-header-right button {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: white;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.toc-header-right button:hover {
+  background: #f7fafc;
+  transform: translateY(-1px);
+}
+
+.toc-content {
+  padding: 16px;
+  max-height: 400px;
+  overflow-y: auto;
+  transition: all 0.3s ease;
+}
+
+#fixed-particlex-toc.collapsed .toc-content {
+  display: none;
+}
+
+.toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.toc-item {
+  margin: 6px 0;
+}
+
+.toc-item a {
+  display: block;
+  text-decoration: none;
+  color: #4a5568;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  transition: all 0.2s ease;
+  border-left: 2px solid transparent;
+}
+
+.toc-item a:hover {
+  background: #f7fafc;
+  color: #2d3748;
+  padding-left: 14px;
+  border-left-color: #cbd5e0;
+}
+
+.toc-item a.active {
+  background: rgba(66, 153, 225, 0.1);
+  color: #2b6cb0;
+  font-weight: 500;
+  border-left-color: #4299e1;
+}
+
+.toc-level-2 a { padding-left: 20px; }
+.toc-level-3 a { padding-left: 30px; }
+.toc-level-4 a { padding-left: 40px; }
+.toc-level-5 a { padding-left: 50px; }
+.toc-level-6 a { padding-left: 60px; }
+
+.toc-content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.toc-content::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 2px;
+}
+
+@media screen and (max-width: 768px) {
+  #fixed-particlex-toc {
+    right: 15px;
+    left: 15px;
+    width: auto;
+  }
+}

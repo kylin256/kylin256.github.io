@@ -43,22 +43,30 @@
         element.textContent = value;
         
         // 生成随机偏移，避免文字完全重叠
-        const offsetX = (Math.random() - 0.5) * 25;
-        const offsetY = (Math.random() - 0.5) * 25;
+        const offsetX = (Math.random() - 0.5) * 20;
+        const offsetY = (Math.random() - 0.5) * 20;
         
-        // 样式设置 - 移除背景或使用极低透明度
+        // 计算起始位置
+        const startX = e.clientX + offsetX;
+        const startY = e.clientY + offsetY;
+        
+        // 计算移动方向 - 稍微偏向某个角度
+        const angle = Math.random() * Math.PI * 0.4 - Math.PI * 0.2; // -0.2π到0.2π之间
+        const distance = 100 + Math.random() * 40; // 移动100-140px
+        const endX = startX + Math.sin(angle) * distance * 0.3; // X轴移动较少
+        const endY = startY - distance; // Y轴向上移动
+        
+        // 样式设置
         element.style.cssText = `
             position: fixed;
-            left: ${e.clientX + offsetX}px;
-            top: ${e.clientY + offsetY}px;
+            left: ${startX}px;
+            top: ${startY}px;
             color: ${color};
             font-size: 22px;
             font-weight: 900;
             font-family: "Microsoft YaHei", "SimHei", "PingFang SC", sans-serif;
             pointer-events: none;
             z-index: 999999;
-            opacity: 1;
-            transform: translate(-50%, -50%);
             user-select: none;
             text-shadow: 
                 2px 2px 0 #FFFFFF,
@@ -73,16 +81,46 @@
                 0 0 20px rgba(255, 0, 0, 0.5);
             white-space: nowrap;
             text-align: center;
-            animation: coreValueFloat 2.5s ease-out forwards;
-            will-change: transform, opacity;
+            line-height: 1;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            line-height: 1;
             filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));
+            
+            /* 初始状态 */
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.95);
         `;
         
         document.body.appendChild(element);
         
+        // 强制重绘，确保动画可以开始
+        element.offsetHeight;
+        
+        // 立即显示文字
+        requestAnimationFrame(() => {
+            element.style.transition = `
+                opacity 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+            `;
+            element.style.opacity = '1';
+            element.style.transform = 'translate(-50%, -50%) scale(1)';
+            
+            // 短暂停留后开始平滑移动
+            setTimeout(() => {
+                // 应用移动和淡出动画
+                element.style.transition = `
+                    opacity 1.8s cubic-bezier(0.4, 0.0, 0.2, 1),
+                    transform 1.8s cubic-bezier(0.4, 0.0, 0.2, 1)
+                `;
+                
+                // 触发移动和淡出
+                requestAnimationFrame(() => {
+                    const translateX = ((endX - startX) / distance) * 100;
+                    element.style.opacity = '0';
+                    element.style.transform = `translate(${-50 + translateX}%, calc(-50% - ${distance}px)) scale(0.95)`;
+                });
+            }, 400); // 400ms后开始移动
+        });
         
         // 移除元素（2.5秒后）
         setTimeout(() => {

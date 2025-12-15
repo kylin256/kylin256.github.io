@@ -1,0 +1,99 @@
+/* 极简版 Mermaid 样式 */
+.mermaid-simple-container {
+    position: relative;
+    margin: 20px 0;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    border: 1px solid #eaeaea;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    min-height: 200px;
+    overflow: hidden;
+}
+
+.mermaid-simple-chart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 180px;
+    padding: 10px;
+    background: transparent;
+    overflow: auto;
+}
+
+.mermaid-simple-chart svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    background: transparent !important;
+    margin: 0 auto;
+}
+
+.mermaid-simple-controls {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 8px;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+    z-index: 10;
+}
+
+.mermaid-simple-container:hover .mermaid-simple-controls {
+    opacity: 1;
+}
+
+.mermaid-simple-controls button {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 12px;
+    color: #333;
+    transition: all 0.2s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.mermaid-simple-controls button:hover {
+    background: #f5f5f5;
+    border-color: #999;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+/* 暗色主题 */
+@media (prefers-color-scheme: dark) {
+    .mermaid-simple-container {
+        background: rgba(30, 30, 35, 0.9);
+        border-color: #444;
+    }
+    
+    .mermaid-simple-controls button {
+        background: #333;
+        color: #fff;
+        border-color: #555;
+    }
+    
+    .mermaid-simple-controls button:hover {
+        background: #444;
+    }
+}
+
+/* 移动端优化 */
+@media (max-width: 768px) {
+    .mermaid-simple-container {
+        margin: 15px 0;
+        padding: 10px;
+    }
+    
+    .mermaid-simple-controls {
+        position: relative;
+        top: 0;
+        right: 0;
+        justify-content: center;
+        margin-top: 10px;
+        opacity: 1;
+    }
+}
