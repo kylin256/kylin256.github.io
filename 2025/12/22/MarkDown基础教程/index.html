@@ -1,0 +1,459 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <title>MarkDown基础教程 | Kylin的站点</title>
+    <meta name="author" content="Kylin" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.css" />
+<script src="/js/lib/math.js"></script>
+
+
+
+
+
+
+
+
+<script src="https://s4.zstatic.net/ajax/libs/twikoo/1.6.31/twikoo.all.min.js"></script>
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>KYLIN的站点</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;主页</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;关于</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;档案馆</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;分类</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;标签</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;KYLIN的站点</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">主页</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">关于</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">档案馆</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">分类</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">标签</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>MarkDown基础教程</h1>
+    </div>
+    <link rel="stylesheet" href="/css/particlex-toc.css">
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/12/22
+        </span>
+        
+        <span class="category">
+            <a href="/categories/%E6%95%99%E7%A8%8B/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                教程
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/tags/MarkDown/" style="color: #ffa2c4">
+                    MarkDown
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/%E6%95%99%E7%A8%8B/" style="color: #ff7d73">
+                    教程
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="Markdown-基础教程"><a href="#Markdown-基础教程" class="headerlink" title="Markdown 基础教程"></a>Markdown 基础教程</h1><ul>
+<li>Markdown 是一种轻量级标记语言，使用纯文本格式编写文档，可以轻松转换为 HTML。它简单易学，适合写作、笔记、文档等场景。<span id="more"></span></li>
+</ul>
+<h2 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h2><h3 id="1-标题"><a href="#1-标题" class="headerlink" title="1. 标题"></a>1. 标题</h3><pre><code class="markdown"># 一级标题
+## 二级标题
+### 三级标题
+#### 四级标题
+##### 五级标题
+###### 六级标题
+</code></pre>
+<h3 id="2-段落和换行"><a href="#2-段落和换行" class="headerlink" title="2. 段落和换行"></a>2. 段落和换行</h3><ul>
+<li><p>普通段落：直接输入文字，空一行分隔段落</p>
+</li>
+<li><p>强制换行：行尾添加两个空格或使用 <code>&lt;br&gt; </code>标签</p>
+</li>
+</ul>
+<h3 id="3-文字强调"><a href="#3-文字强调" class="headerlink" title="3. 文字强调"></a>3. 文字强调</h3><pre><code class="markdown">*斜体文本* 或 _斜体文本_
+
+**粗体文本** 或 __粗体文本__
+
+***粗斜体*** 或 ___粗斜体___
+
+~~删除线文本~~
+</code></pre>
+<h3 id="4-列表"><a href="#4-列表" class="headerlink" title="4. 列表"></a>4. 列表</h3><ul>
+<li>无序列表</li>
+</ul>
+<pre><code class="markdown">- 项目一
+- 项目二
+  - 子项目
+  - 子项目
+* 也可使用星号
++ 或加号
+</code></pre>
+<ul>
+<li>有序列表</li>
+</ul>
+<pre><code class="markdown">1. 第一项
+2. 第二项
+   1. 子项
+   2. 子项
+3. 第三项
+</code></pre>
+<h3 id="4-链接"><a href="#4-链接" class="headerlink" title="4. 链接"></a>4. 链接</h3><pre><code class="markdown">[链接文字](URL &quot;可选标题&quot;)
+
+示例：
+[Google](https://google.com)
+[百度](https://baidu.com &quot;百度首页&quot;)
+</code></pre>
+<p>输入进来这个样子<br><a href="https://google.com/">Google</a><br><a href="https://baidu.com/" title="百度首页">百度</a></p>
+<h3 id="6-图片"><a href="#6-图片" class="headerlink" title="6. 图片"></a>6. 图片</h3><pre><code class="markdown">![替代文字](图片URL &quot;可选标题&quot;)
+
+示例：
+![百度logo](https://m.baidu.com/se/static/img/iphone/logo.png &quot;图片说明&quot;)
+</code></pre>
+<p>输入后这个样子<br><img src="https://m.baidu.com/se/static/img/iphone/logo.png" alt="百度logo" title="图片说明"></p>
+<h3 id="7-代码"><a href="#7-代码" class="headerlink" title="7. 代码"></a>7. 代码</h3><ul>
+<li>行内代码</li>
+</ul>
+<pre><code class="markdown">使用 `code` 包裹行内代码
+</code></pre>
+<ul>
+<li>代码块<blockquote>
+<p>使用三个反引号<code>这种```就是反引号</code>包围代码<br>在第三个反引号右边可以写上代码语言（不是必须写，可以留空），也就是说，总共六个反引号。</p>
+</blockquote>
+</li>
+</ul>
+<p><img src="https://www.runoob.com/wp-content/uploads/2019/03/d680c492-f0c1-47e8-9835-b12fcbab3238.png" alt="菜鸟教程md代码块图片" title="这是菜鸟教程上的图片，借用一下用来展示"></p>
+<h3 id="8-引用"><a href="#8-引用" class="headerlink" title="8. 引用"></a>8. 引用</h3><pre><code class="markdown">&gt; 引用内容
+&gt; 
+&gt; 多行引用
+&gt; 
+&gt;&gt; 嵌套引用
+</code></pre>
+<h3 id="9-表格"><a href="#9-表格" class="headerlink" title="9. 表格"></a>9. 表格</h3><pre><code class="markdown">| 表头1 | 表头2 | 表头3 |
+|-------|-------|-------|
+| 内容1 | 内容2 | 内容3 |
+| 左对齐 | 居中对齐 | 右对齐 |
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>表头1</th>
+<th>表头2</th>
+<th>表头3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>内容1</td>
+<td>内容2</td>
+<td>内容3</td>
+</tr>
+<tr>
+<td>左对齐</td>
+<td>居中对齐</td>
+<td>右对齐</td>
+</tr>
+</tbody></table>
+<p>对齐方式控制：</p>
+<pre><code class="markdown">| 左对齐 | 居中对齐 | 右对齐 |
+|:------|:------:|------:|
+| 内容  |  内容  |  内容 |
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">左对齐</th>
+<th align="center">居中对齐</th>
+<th align="right">右对齐</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">内容</td>
+<td align="center">内容</td>
+<td align="right">内容</td>
+</tr>
+</tbody></table>
+<h3 id="10-水平分割线"><a href="#10-水平分割线" class="headerlink" title="10. 水平分割线"></a>10. 水平分割线</h3><pre><code class="markdown">---
+***
+___
+</code></pre>
+<hr>
+<hr>
+<hr>
+<h3 id="11-任务列表"><a href="#11-任务列表" class="headerlink" title="11. 任务列表"></a>11. 任务列表</h3><pre><code class="markdown">- [ ] 未完成任务
+- [x] 已完成任务
+- [ ] 另一个任务
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"> 未完成任务</li>
+<li><input checked="" disabled="" type="checkbox"> 已完成任务</li>
+<li><input disabled="" type="checkbox"> 另一个任务</li>
+</ul>
+<h3 id="12-脚注"><a href="#12-脚注" class="headerlink" title="12. 脚注"></a>12. 脚注</h3><pre><code class="markdown">这是一个带有脚注的文本[^1]
+
+[^1]: 这是脚注的内容
+</code></pre>
+<p>这是一个带有脚注的文本<a href="%E8%BF%99%E6%98%AF%E8%84%9A%E6%B3%A8%E7%9A%84%E5%86%85%E5%AE%B9">^1</a></p>
+<h3 id="13-转义字符"><a href="#13-转义字符" class="headerlink" title="13. 转义字符"></a>13. 转义字符</h3><p>使用反斜杠转义特殊字符：</p>
+<pre><code class="markdown">\* 这不是斜体 \*
+\# 这不是标题
+\[这不是链接]
+</code></pre>
+<p>* 这不是斜体 *<br># 这不是标题<br>[这不是链接]</p>
+<h2 id="高级特性"><a href="#高级特性" class="headerlink" title="高级特性"></a>高级特性</h2><h3 id="14-目录（部分解析器支持）"><a href="#14-目录（部分解析器支持）" class="headerlink" title="14. 目录（部分解析器支持）"></a>14. 目录（部分解析器支持）</h3><pre><code class="markdown">输入[TOC]即可自动生成目录
+</code></pre>
+<h3 id="15-定义列表"><a href="#15-定义列表" class="headerlink" title="15. 定义列表"></a>15. 定义列表</h3><pre><code class="markdown">术语1
+: 定义1
+
+术语2
+: 定义2
+</code></pre>
+<dl><dt>术语1</dt><dd>定义1</dd></dl><dl><dt>术语2</dt><dd>定义2</dd></dl><h3 id="16-上标和下标"><a href="#16-上标和下标" class="headerlink" title="16. 上标和下标"></a>16. 上标和下标</h3><pre><code class="markdown">上标：X^2^
+下标：H~2~O
+</code></pre>
+<p>上标：X^2^<br>下标：H<del>2</del>O</p>
+<h2 id="实践建议"><a href="#实践建议" class="headerlink" title="实践建议"></a>实践建议</h2><ul>
+<li>保持一致性：在整个文档中使用相同的标记风格</li>
+<li>适当换行：每行建议不超过 80 个字符，提高可读性</li>
+<li>使用空格：在列表、链接等标记后添加空格</li>
+<li>备份源文件：保留原始的 .md 文件</li>
+</ul>
+<h2 id="注释语法（部分解析器支持）："><a href="#注释语法（部分解析器支持）：" class="headerlink" title="注释语法（部分解析器支持）："></a>注释语法（部分解析器支持）：</h2><pre><code class="markdown">&lt;!-- 这是注释，不会显示 --&gt;
+</code></pre>
+<h2 id="常用工具推荐"><a href="#常用工具推荐" class="headerlink" title="常用工具推荐"></a>常用工具推荐</h2><ul>
+<li>编辑器：VS Code, Typora, Obsidian</li>
+<li>在线编辑：StackEdit, Dillinger</li>
+<li>转换工具：Pandoc, Markdown to PDF</li>
+</ul>
+
+    </div>
+    
+    <script src="/js/particlex-toc.js" defer></script>
+    
+    
+    
+    <div id="comment">
+        <div id="giscus-container" class="giscus"></div>
+    </div>
+    
+    
+    
+    <div id="comment">
+        <div id="twikoo-container"></div>
+    </div>
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2025 Kylin的站点
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Kylin
+        </div>
+        <div>
+            Based on the <a href="https://hexo.io">Hexo Engine</a> &amp;
+            <a href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+    
+</footer>
+
+        </div>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    <link rel="stylesheet" href="/css/core-values.css">
+    <script src="/js/core-values-click.js"></script>
+    
+    
+<script
+    src="https://giscus.app/client.js"
+    data-repo=""
+    data-repo-id=""
+    data-category=""
+    data-category-id=""
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang=""
+    crossorigin
+    async
+></script>
+
+
+
+
+<script>
+    twikoo.init({
+        el: "#twikoo-container",
+        envId: "https://kylin256comments.netlify.app/.netlify/functions/twikoo",
+        region: "",
+        path: location.pathname,
+        lang: "",
+    })
+</script>
+
+
+    
+</body>
+</html>

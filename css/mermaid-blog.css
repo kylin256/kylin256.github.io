@@ -1,0 +1,151 @@
+.mermaid {
+    position: relative !important;
+    overflow: hidden !important;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #fff;
+    margin: 20px auto;
+    min-height: 200px;
+    width: 100%;
+}
+
+/* 透明容器 */
+.mermaid-interactive-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* SVG样式 */
+.mermaid-interactive-container svg {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    cursor: grab;
+    user-select: none;
+    transform-origin: center center;
+    transition: transform 0.1s ease-out;
+    pointer-events: auto;
+}
+
+.mermaid-interactive-container svg:active {
+    cursor: grabbing;
+}
+
+/* 控制按钮容器 */
+.mermaid-controls {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 8px;
+    z-index: 100;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    pointer-events: auto;
+}
+
+.mermaid-controls:hover {
+    opacity: 1;
+}
+
+/* 控制按钮 */
+.mermaid-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    transition: all 0.2s;
+    user-select: none;
+}
+
+.mermaid-btn:hover {
+    background-color: #fff;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+
+.mermaid-btn:active {
+    transform: scale(0.95);
+}
+
+/* 下载按钮特殊样式 */
+.mermaid-btn.download::after {
+    content: "↓";
+    font-weight: bold;
+}
+
+/* 复位按钮特殊样式 */
+.mermaid-btn.reset::after {
+    content: "↻";
+}
+
+/* 缩放指示器 */
+.mermaid-zoom-info {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #555;
+    border: 1px solid #ddd;
+    z-index: 99;
+    pointer-events: none;
+}
+
+/* 双击提示 - 右下角 */
+.mermaid-double-click-hint {
+    position: absolute;
+    bottom: 10px;
+    right: 10px; /* 留出按钮区域 */
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    color: #777;
+    border: 1px solid #ddd;
+    z-index: 99;
+    pointer-events: none;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .mermaid-controls {
+        top: 8px;
+        right: 8px;
+        gap: 6px;
+    }
+    
+    .mermaid-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 14px;
+    }
+    
+    .mermaid-zoom-info,
+    .mermaid-double-click-hint {
+        font-size: 10px;
+        padding: 3px 6px;
+    }
+    
+    .mermaid-double-click-hint {
+        bottom: 8px;
+        right: 60px; /* 移动端稍微调整位置 */
+    }
+}

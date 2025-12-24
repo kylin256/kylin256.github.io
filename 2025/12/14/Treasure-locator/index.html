@@ -41,8 +41,6 @@
 <script src="/js/lib/math.js"></script>
 
 
-<script src="/js/lib/preview.js"></script>
-
 
 
 
@@ -165,7 +163,6 @@
     <div>
         <h1>宝藏位置辅助计算器 - 项目说明</h1>
     </div>
-    <!-- 引入目录css -->
     <link rel="stylesheet" href="/css/particlex-toc.css">
     <div class="info">
         <span class="date">
@@ -200,14 +197,14 @@
             
             <span class="tag">
                 
-                <a href="/tags/JavaScript/" style="color: #03a9f4">
+                <a href="/tags/JavaScript/" style="color: #00bcd4">
                     JavaScript
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/CSS/" style="color: #ff7d73">
+                <a href="/tags/CSS/" style="color: #03a9f4">
                     CSS
                 </a>
             </span>
@@ -221,14 +218,14 @@
             
             <span class="tag">
                 
-                <a href="/tags/FastAPI/" style="color: #00a596">
+                <a href="/tags/FastAPI/" style="color: #03a9f4">
                     FastAPI
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/%E7%AE%97%E6%B3%95/" style="color: #ffa2c4">
+                <a href="/tags/%E7%AE%97%E6%B3%95/" style="color: #00bcd4">
                     算法
                 </a>
             </span>
@@ -238,7 +235,9 @@
     </div>
     
     <div class="content" v-pre>
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在25年的10月份，当时有关注到某游戏的活动界面上线了一个叫做挖宝藏的活动，将宝藏按照指定的摆放形状放于5x5的格子内，挖到宝藏将有对应的奖励。<br>然而，如果随便点的话，那不仅可能导致消耗大量材料，甚至于一定的财力😕，那怎么能行呢？于是，就有了这个项目。（项目10月份写完的时候还没来得及上传活动就结束了，活动不是第一次出现了，万一以后还有的话就用的上，上传到云仓库吧稳妥些）<br><a href="https://github.com/kylin256/Treasure-Locator">项目地址：https://github.com/kylin256/Treasure-Locator</a></p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在25年的10月份，当时有关注到某游戏的活动界面上线了一个叫做挖宝藏的活动，将宝藏按照指定的摆放形状放于5x5的格子内，挖到宝藏将有对应的奖励。</p>
+<span id="more"></span>
+<p>然而，如果随便点的话，那不仅可能导致消耗大量材料，甚至于一定的财力😕，那怎么能行呢？于是，就有了这个项目。（项目10月份写完的时候还没来得及上传活动就结束了，活动不是第一次出现了，万一以后还有的话就用的上，上传到云仓库吧稳妥些）<br><a href="https://github.com/kylin256/Treasure-Locator">项目地址：https://github.com/kylin256/Treasure-Locator</a></p>
 <p>[TOC]</p>
 <h2 id="📋-项目简介"><a href="#📋-项目简介" class="headerlink" title="📋 项目简介"></a>📋 项目简介</h2><p>这是一个基于 FastAPI 的宝藏位置辅助计算器，用于在5x5网格上根据不同的宝藏形状和用户标记，计算宝藏可能位置的概率分布。该项目通过颜色编码可视化概率，帮助用户进行逻辑推理和决策。</p>
 <h2 id="⚙️-安装"><a href="#⚙️-安装" class="headerlink" title="⚙️ 安装"></a>⚙️ 安装</h2><ul>
@@ -705,7 +704,6 @@ FastAPIApp --> PositionCalculator</pre>
 
     </div>
     
-    <!-- 引入目录js -->
     <script src="/js/particlex-toc.js" defer></script>
     
     
@@ -741,63 +739,15 @@ FastAPIApp --> PositionCalculator</pre>
     </div>
     
         <!-- 使用 CloudFlare CDN，更稳定 -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.1.3/mermaid.min.js"></script>
-        
-        <!-- 极简样式 -->
-        <link rel="stylesheet" href="/css/mermaid-simple.css" />
-        
-        <!-- 极简脚本，使用 defer 避免阻塞 -->
-        <script src="/js/mermaid-simple.js" defer></script>
-
-        <!-- 拖拽增强功能 -->
-        <link rel="stylesheet" href="/css/mermaid-drag.css" />
-        <script src="/js/mermaid-drag.js" defer></script>
-        
-        <!-- 简单的拖拽控制按钮 -->
-        <style>
-            .mermaid-drag-controls {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            display: flex;
-            gap: 5px;
-            z-index: 20;
-            opacity: 0.7;
-            transition: opacity 0.3s;
-            }
-            
-            .mermaid-container:hover .mermaid-drag-controls {
-            opacity: 1;
-            }
-            
-            .drag-control-btn {
-            background: white;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            padding: 4px 8px;
-            cursor: pointer;
-            font-size: 12px;
-            color: #333;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            transition: all 0.2s;
-            }
-            
-            .drag-control-btn:hover {
-            background: #f5f5f5;
-            transform: translateY(-1px);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-            }
-        </style>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.1/mermaid.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.0/dist/svg-pan-zoom.min.js"></script>
+        <!-- 引入自定义的交互控制脚本 -->
+        <script src="/js/mermaid-blog.js" defer></script>
+        <link rel="stylesheet" href="/css/mermaid-blog.css">
     
 </footer>
 
         </div>
-        
-        <transition name="fade">
-            <div id="preview" ref="preview" v-show="previewShow">
-                <img id="preview-content" ref="previewContent" />
-            </div>
-        </transition>
         
     </div>
     <script src="/js/main.js"></script>
